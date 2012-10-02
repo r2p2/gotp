@@ -33,9 +33,7 @@ func ServeTime(addr string) error {
 			continue
 		}
 
-		dnow := time.Since(tstart)
-		now := uint(dnow.Seconds() + dnow.Minutes()*60 + dnow.Hours()*60*60)
-		to_byte(now, &tx)
+		to_byte(uint(time.Since(tstart)/1000000000), &tx)
 
 		txs, err = udpconn.WriteToUDP(tx, caddr)
 		if err != nil {
