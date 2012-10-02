@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"rfc868"
 )
 
 var daemon = flag.Bool("daemon", false, "run application as daemon. share your time.")
@@ -13,13 +14,13 @@ func main() {
 	flag.Parse()
 
 	if *daemon == true {
-		err := ServeTime(*address)
+		err := rfc868.ServeTime(*address)
 		if err != nil {
 			fmt.Println("error: " + err.Error())
 			return
 		}
 	} else {
-		time, err := RequestTime(*address)
+		time, err := rfc868.RequestTime(*address)
 		if err != nil {
 			fmt.Println("error: " + err.Error())
 			return
