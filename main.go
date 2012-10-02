@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"rfc868"
+	"github.com/r2p2/rfc868"
 )
 
 var daemon = flag.Bool("daemon", false, "run application as daemon. share your time.")
